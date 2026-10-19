@@ -1,0 +1,62 @@
+# Paper and submission bundles
+/paper*.pdf
+/paper.tex
+/paper.bib
+/paper.aux
+/paper.bbl
+/paper.blg
+/paper.fdb_latexmk
+/paper.fls
+/paper.synctex.gz
+*.tar.gz
+/submission*.zip
+
+# Local environments, dependencies, and caches
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+node_modules/
+.cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Compiled outputs and generated cryptographic setup
+target/
+core/contracts/build/
+integration/build/
+core/halo2/keys/
+core/simplepir/oob-pir
+core/experiments/S7E4/oob-pir
+core/experiments/S7E4/s7e4bench
+*.bin
+*.o
+*.a
+*.so
+*.dylib
+
+# Runtime state and experiment output
+/testbed/
+/core/results/
+*.sqlite*
+*.log
+*.stderr
+*.stdout
+
+# Editor, OS, and temporary files
+.DS_Store
+._*
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.tmp
+*.bak
+*.orig
+*.rej
