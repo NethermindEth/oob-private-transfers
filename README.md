@@ -4,6 +4,7 @@ Out-of-band private data delivery for shielded transfers, with private retrieval
 
 Providers admit 736-byte encrypted records using Halo2 proofs; recipients retrieve records using SimplePIR.
 Closed epochs are erasure-coded and distributed to holders under KZG commitments.
+A standalone experiment re-instantiates the admission proof on Binius64 (`core/binius`).
 
 ## Requirements
 
@@ -26,6 +27,13 @@ ln -s ../../integration/node_modules core/contracts/node_modules
 (cd core/simplepir && go build -o oob-pir .)
 (cd core/simplepir && go build -o ../experiments/S7E4/s7e4bench ./cmd/s7e4bench)
 export PYTHONPATH="$PWD"
+```
+
+The Binius64 admission experiment is optional and builds separately; it uses its own pinned
+toolchain (Rust 1.98.1, fetched by rustup) and nothing above depends on it:
+
+```sh
+(cd core/binius && RUSTFLAGS="-C target-cpu=native" cargo build --release --locked)
 ```
 
 The `node_modules` link is needed only once. Contract compilation also creates a local
@@ -56,6 +64,7 @@ The service suite starts real Anvil, provider, holder, prover, and PIR processes
 | `core/oobsvc/` | Services, clients, certification, erasure coding, recovery, and testbed |
 | `core/contracts/` | Solidity contracts, spend circuit, build and chain workers |
 | `core/halo2/` | Admission proof worker, benchmarks, and tests |
+| `core/binius/` | Standalone Binius64 instantiation of the admission proof (SHA-256, AES-CTR, secp256k1) |
 | `core/simplepir/` | SimplePIR worker and tests |
 | `core/kzg/` | Pinned trusted setup and provenance |
 | `core/experiments/` | Experiment drivers and table generators |

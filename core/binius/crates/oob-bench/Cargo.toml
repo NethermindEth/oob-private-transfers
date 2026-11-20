@@ -1,0 +1,25 @@
+[package]
+name = "oob-bench"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "CLI and benches: build, prove and verify the admission circuit; report constraint counts, times and sizes"
+
+[dependencies]
+oob-circuits = { path = "../oob-circuits" }
+binius-frontend.workspace = true
+binius-core.workspace = true
+binius-circuits.workspace = true
+binius-prover.workspace = true
+binius-verifier.workspace = true
+binius-hash.workspace = true
+binius-transcript.workspace = true
+binius-utils.workspace = true
+anyhow.workspace = true
+clap.workspace = true
+rand.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+
+[dev-dependencies]
+criterion.workspace = true
