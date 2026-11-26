@@ -1,0 +1,40 @@
+[workspace]
+resolver = "3"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+
+[workspace.dependencies]
+# Binius64 pinned to the commit audited on 2026-10-31 (main, 2026-10-30).
+binius-frontend   = { git = "https://github.com/binius-zk/binius64", rev = "fe81eee771f67cbb59d12a0d563280aab3031b83" }
+binius-core       = { git = "https://github.com/binius-zk/binius64", rev = "fe81eee771f67cbb59d12a0d563280aab3031b83" }
+binius-circuits   = { git = "https://github.com/binius-zk/binius64", rev = "fe81eee771f67cbb59d12a0d563280aab3031b83" }
+binius-prover     = { git = "https://github.com/binius-zk/binius64", rev = "fe81eee771f67cbb59d12a0d563280aab3031b83", default-features = false }
+binius-verifier   = { git = "https://github.com/binius-zk/binius64", rev = "fe81eee771f67cbb59d12a0d563280aab3031b83" }
+binius-hash       = { git = "https://github.com/binius-zk/binius64", rev = "fe81eee771f67cbb59d12a0d563280aab3031b83" }
+binius-transcript = { git = "https://github.com/binius-zk/binius64", rev = "fe81eee771f67cbb59d12a0d563280aab3031b83" }
+binius-utils      = { git = "https://github.com/binius-zk/binius64", rev = "fe81eee771f67cbb59d12a0d563280aab3031b83" }
+
+anyhow = "1"
+clap = { version = "4.5", features = ["derive"] }
+rand = { version = "0.10", features = ["thread_rng"] }
+sha2 = "0.11"
+aes = "0.9"
+ctr = "0.10"
+k256 = { version = "0.14", default-features = false, features = ["arithmetic"] }
+hex = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+criterion = "0.8"
+proptest = "1"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+
+[profile.bench]
+inherits = "release"
+debug = 1

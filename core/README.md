@@ -46,6 +46,8 @@ scripts/benchlock .venv/bin/python -m core.experiments.S7E6.run_s7e6 --help
 These cover holder configurations, admission cost, retrieval/certification latency, PIR cost, and
 provider replacement. The `E1`–`E7` drivers provide component experiments and baselines;
 `bash core/experiments/run_all.sh` runs the component series and generates tables.
+`scripts/benchlock core/experiments/S7E2binius/matrix.sh` measures the admission relation
+re-instantiated on Binius64 ([binius/README.md](binius/README.md)); it is independent of the services.
 Drivers create result directories as needed. Load gates and contamination flags are measurement
 controls, not correctness checks. Table generators require completed input runs.
 
